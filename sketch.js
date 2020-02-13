@@ -44,9 +44,10 @@ function setup() {
   count = 0;
   count2 = 0;
   size = 0.1;
+  bgColor = "#000";
 
   if (windowWidth / 2 < maxCircleWidth) {
-    circleWidth = windowWidth / 2;
+    circleWidth = windowWidth / 1.3;
   } else if (windowWidth / 2 > minCircleWidth) {
     circleWidth = minCircleWidth;
   } else {
@@ -73,29 +74,36 @@ function mousePressed() {
 }
 
 function draw() {
-  if (!song.isPlaying()) {
+  if (song.isPlaying()) {
+    if (frameCount % 60 == 0) {
+      bgColor = color(random(255), random(255), random(255));
+    }
+    background(bgColor);
   }
 
-  background(250);
   Engine.update(engine);
   for (var i = 0; i < boxes.length; i++) {
     boxes[i].show();
   }
-  noStroke(255);
+
+  stroke("#FFC0CB");
   fill("#FFC0CB");
+  strokeWeight(1);
   rectMode(CENTER);
   ellipse(middle.position.x, middle.position.y, circleWidth, circleWidth);
-  textSize(32 * size);
+  noStroke();
+  textSize(22 * size);
   fill(30);
   text(
     "Happy Valentines",
-    windowWidth / 2 - 120 * size,
+    windowWidth / 2 - 80 * size,
     windowHeight / 2 - 20 * size
   );
-  textSize(50 * size);
+  textSize(30 * size);
   fill(20);
-  text("Catherine", windowWidth / 2 - 110 * size, windowHeight / 2 + 50 * size);
-
+  text("Catherine", windowWidth / 2 - 60 * size, windowHeight / 2 + 30 * size);
+  textSize(22 * size);
+  text("From Oscar", windowWidth / 2 - 55 * size, windowHeight / 2 + 80 * size);
   const randomHeight = random(1, 2) * 20;
 
   if (count > 50) {
@@ -108,7 +116,7 @@ function draw() {
     size += 0.01;
   }
 
-  if (count2 > 2) {
+  if (count2 > 1) {
     boxes.push(
       new Box(
         random(0, windowWidth),

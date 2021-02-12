@@ -22,11 +22,8 @@ function preload() {
   for (var i = 0; i < 6; i++) {
     emojis[i] = loadImage("images/emoji/" + i + ".png");
   }
-  for (var i = 0; i < 7; i++) {
+  for (var i = 0; i < 17; i++) {
     pics[i] = loadImage("images/pics/" + i + ".jpeg");
-  }
-  for (var i = 0; i < 1; i++) {
-    pics[i] = loadImage("images/pics/" + i + ".gif");
   }
   song = loadSound("sounds/sound.mp3");
   laser = loadSound("sounds/laser.mp3");
@@ -56,7 +53,7 @@ function setup() {
 
   middle = Bodies.circle(
     windowWidth / 2,
-    windowHeight / 2,
+    windowHeight,
     circleWidth / 2,
     options
   );
@@ -86,24 +83,6 @@ function draw() {
     boxes[i].show();
   }
 
-  stroke("#FFC0CB");
-  fill("#FFC0CB");
-  strokeWeight(1);
-  rectMode(CENTER);
-  ellipse(middle.position.x, middle.position.y, circleWidth, circleWidth);
-  noStroke();
-  textSize(22 * size);
-  fill(30);
-  text(
-    "Happy Valentines",
-    windowWidth / 2 - 80 * size,
-    windowHeight / 2 - 20 * size
-  );
-  textSize(30 * size);
-  fill(20);
-  text("Catherine", windowWidth / 2 - 60 * size, windowHeight / 2 + 30 * size);
-  textSize(22 * size);
-  text("From Oscar", windowWidth / 2 - 55 * size, windowHeight / 2 + 80 * size);
   const randomHeight = random(1, 2) * 20;
 
   if (count > 50) {

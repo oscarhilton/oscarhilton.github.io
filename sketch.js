@@ -22,10 +22,14 @@ function preload() {
   for (var i = 0; i < 6; i++) {
     emojis[i] = loadImage("images/emoji/" + i + ".png");
   }
-  for (var i = 0; i < 17; i++) {
-    pics[i] = loadImage("images/pics/" + i + ".jpeg");
+  for (var i = 0; i < 57; i++) {
+    try {
+      pics[i] = loadImage("images/pics/" + i + "image.jpg");
+    } catch (e) {
+      console.log(e);
+    }
   }
-  song = loadSound("sounds/sound.mp3");
+  // song = loadSound("sounds/sound.mp3");
   laser = loadSound("sounds/laser.mp3");
 }
 
@@ -53,13 +57,13 @@ function setup() {
 
   middle = Bodies.circle(
     windowWidth / 2,
-    windowHeight,
+    windowHeight / 2,
     circleWidth / 2,
     options
   );
 
   World.add(world, middle);
-  song.play();
+  // song.play();
 }
 
 function mousePressed() {
@@ -71,12 +75,10 @@ function mousePressed() {
 }
 
 function draw() {
-  if (song.isPlaying()) {
-    if (frameCount % 60 == 0) {
-      bgColor = color(random(255), random(255), random(255));
-    }
-    background(bgColor);
+  if (frameCount % 60 == 0) {
+    bgColor = color(random(255), random(255), random(255));
   }
+  background(bgColor);
 
   Engine.update(engine);
   for (var i = 0; i < boxes.length; i++) {

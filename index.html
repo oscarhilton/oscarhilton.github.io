@@ -13,19 +13,55 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>Happy Valentines!</title>
+    <title>HAPPY 30TH STANLEY</title>
     <meta name="description" content="HAPPY 30TH STANLEY" />
     <meta name="author" content="Oscar Hilton" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <script src="matter.js"></script>
     <script src="box.js"></script>
   </head>
 
   <body>
+    <video width="300" height="500" autoplay loop class="videoofstan">
+      <source src="vids/donthurtme.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="swiper-container">
+      <div class="swiper-wrapper" id="app">
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
     <script src="sketch.js"></script>
+    <script src="swiper.js"></script>
+    <script>
+      // compile the template
+      var template = Handlebars.compile("{{#each images as |image|}}<div class='swiper-slide'><div class='slide'><img src='images/pics/{{image}}.jpg' class='swiper-image' /></div></div>{{/each}}");
+      // execute the compiled template and print the output to the console
+
+      var array = [];
+      for (var i = 0; i < 57; i++) {
+        array.push(i + "image");
+      }
+    
+      document.getElementById("app").innerHTML = template({ images: array });
+      function playVideos() {
+        var allVideos = document.querySelectorAll('video');
+          console.log(allVideos.length);
+          for (var i = 0; i < allVideos.length; i++) {
+              allVideos[i].play();
+          }
+      }
+      document.body.addEventListener("touchstart", playVideos,{ once: true });
+      document.body.addEventListener("click", playVideos,{ once: true });
+    </script>
   </body>
 </html>

@@ -3,3 +3,38 @@ body {
   margin: 0;
   padding: 0;
 }
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.swiper-container {
+  height: auto;
+}
+
+.slide {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.videoofstan {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-height: 80vh;
+}
+
+.swiper-image {
+  max-height: 75vh;
+  border: solid 5px white;
+}

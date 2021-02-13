@@ -33,6 +33,10 @@ function preload() {
   laser = loadSound("sounds/laser.mp3");
 }
 
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   engine = Engine.create();

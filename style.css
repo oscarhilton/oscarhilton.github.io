@@ -31,10 +31,11 @@ canvas {
   left: 0;
   right: 0;
   margin: auto;
-  max-height: 80vh;
+  max-width: 80vw;
 }
 
 .swiper-image {
+  max-width: 75vw;
   max-height: 75vh;
   border: solid 5px white;
 }

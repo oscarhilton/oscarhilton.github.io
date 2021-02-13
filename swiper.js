@@ -7,4 +7,8 @@ const swiper = new Swiper('.swiper-container', {
   autoplay: {
     delay: 2000,
   },
+  observer: true,
+  observeParents: true,
 });
+
+swiper.updateSize();
